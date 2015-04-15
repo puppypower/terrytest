@@ -17,10 +17,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml")
 public class HelloPageTests {
     private Selenium selenium;
+    private String seleniumHubHost = "localhost"; // IP or Hostname of Selenium Server
+    private Integer seleniumHubPort = 4444; // Port of Selenium Server
+    private String browserType = "*firefox"; // browser types
+    private String appURL = "http://localhost:8181"; // application url to be tested
 
     @Before
     public void setUp() throws Exception {
-        selenium = new DefaultSelenium("localhost", 4444, "*firefox", "http://localhost:8181");
+        selenium = new DefaultSelenium(seleniumHubHost, seleniumHubPort, browserType, appURL);
         selenium.start();
     }
 
@@ -31,7 +35,10 @@ public class HelloPageTests {
 
     @Test
     public void testHelloMessage() {
-        selenium.open("http://localhost:8181");
+        /**
+         *  Put your testing script in each unit test method
+         */
+        selenium.open(appURL);
         selenium.waitForPageToLoad("1000");
         Assert.assertEquals(selenium.getTitle(), "Hello");
     }

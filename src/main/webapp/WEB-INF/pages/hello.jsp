@@ -9,7 +9,7 @@
     margin: auto;   width: 90%;
 ">
     <div style="width: 45%">
-        <div style="background-color: #fdfdfd; padding: 9px 9px; text-align: right; height: 20px; border: 1px solid #bfbfbf; margin: auto;">
+        <div>
             This is the test for TeamCity & Selenium.
         </div>
     </div>
